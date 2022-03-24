@@ -17,6 +17,7 @@ import numpy as np
 from torch.utils.data import Dataset
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
+Dataset_BASE_DIR = "/data/dataset/ScanNet_3D/"
 sys.path.append(ROOT_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import pc_util
@@ -33,7 +34,7 @@ class ScannetDetectionDataset(Dataset):
                         use_color=False, use_height=False, augment=False, remove_obj=False, test_transductive=False):
 
         print('--------- DetectionDataset ', split_set, ' Initialization ---------')
-        self.data_path = os.path.join(BASE_DIR, 'scannet_train_detection_data')
+        self.data_path = os.path.join(Dataset_BASE_DIR, 'scannet_train_detection_data')
         all_scan_names = list(set([os.path.basename(x)[0:12] \
             for x in os.listdir(self.data_path) if x.startswith('scene')]))
         if split_set=='all':            

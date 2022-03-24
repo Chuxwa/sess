@@ -10,6 +10,7 @@ from torch.utils.data import Dataset
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
+Dataset_BASE_DIR = "/data/dataset/ScanNet_3D/"
 sys.path.append(ROOT_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import pc_util
@@ -27,7 +28,7 @@ class ScannetLabedledTwoStreamDataset(Dataset):
     def __init__(self, labeled_sample_list=None, num_points=20000, use_color=False, use_height=False, augment=False):
 
         print('--------- Scannet Labedled TwoStream Dataset Initialization ---------')
-        self.data_path = os.path.join(BASE_DIR, 'scannet_train_detection_data')
+        self.data_path = os.path.join(Dataset_BASE_DIR, 'scannet_train_detection_data')
         if labeled_sample_list is not None:
             self.scan_names = [x.strip() for x in open(
                 os.path.join(ROOT_DIR, 'scannet/meta_data', labeled_sample_list)).readlines()]
@@ -188,7 +189,7 @@ class ScannetLabedledTwoStreamDataset(Dataset):
 class ScannetUnlabedledTwoStreamDataset(Dataset):
     def __init__(self, labeled_sample_list=None, num_points=20000, use_color=False, use_height=False, augment=False):
         print('----------------Scannet Unlabedled TwoStream Dataset Initialization----------------')
-        self.data_path = os.path.join(BASE_DIR, 'scannet_train_detection_data')
+        self.data_path = os.path.join(Dataset_BASE_DIR, 'scannet_train_detection_data')
         all_scan_names = list(set([os.path.basename(x)[0:12] \
                                    for x in os.listdir(self.data_path) if x.startswith('scene')]))
         split_filenames = os.path.join(ROOT_DIR, 'scannet/meta_data/scannetv2_train.txt')
