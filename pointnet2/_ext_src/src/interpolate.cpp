@@ -38,7 +38,7 @@ std::vector<at::Tensor> three_nn(at::Tensor unknowns, at::Tensor knows) {
                             unknowns.data<float>(), knows.data<float>(),
                             dist2.data<float>(), idx.data<int>());
   } else {
-    AT_CHECK(false, "CPU not supported");
+    TORCH_CHECK(false, "CPU not supported");
   }
 
   return {dist2, idx};
@@ -68,7 +68,7 @@ at::Tensor three_interpolate(at::Tensor points, at::Tensor idx,
         points.data<float>(), idx.data<int>(), weight.data<float>(),
         output.data<float>());
   } else {
-    AT_CHECK(false, "CPU not supported");
+    TORCH_CHECK(false, "CPU not supported");
   }
 
   return output;
@@ -92,12 +92,12 @@ at::Tensor three_interpolate_grad(at::Tensor grad_out, at::Tensor idx,
                    at::device(grad_out.device()).dtype(at::ScalarType::Float));
 
   if (grad_out.type().is_cuda()) {
-    three_interpolate_kernel_wrapper(
+    three_interpolate_grad_kernel_wrapper(
         grad_out.size(0), grad_out.size(1), grad_out.size(2), m,
         grad_out.data<float>(), idx.data<int>(), weight.data<float>(),
         output.data<float>());
   } else {
-    AT_CHECK(false, "CPU not supported");
+    TORCH_CHECK(false, "CPU not supported");
   }
 
   return output;

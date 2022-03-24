@@ -3,8 +3,6 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-# Modified by Zhao Na, 2019
-
 ''' Pointnet2 layers.
 Modified based on: https://github.com/erikwijmans/Pointnet2_PyTorch
 Extended with the following:
