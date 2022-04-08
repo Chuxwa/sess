@@ -10,7 +10,7 @@ from torch.utils.data import Dataset
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-Dataset_BASE_DIR = "/data/dataset/ScanNet_3D/"
+Dataset_BASE_DIR = "/home2/dataset/ScanNet_3d/"
 sys.path.append(ROOT_DIR)
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 import pc_util

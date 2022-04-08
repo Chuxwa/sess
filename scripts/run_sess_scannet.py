@@ -56,7 +56,7 @@ def eval_transductive(labeled_ratio=0.1):
 
 
 if __name__ == '__main__':
-    GPU_ID = 0
+    GPU_ID = 3
     labeled_ratio_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.7]
 
     for labeled_ratio in labeled_ratio_list:

@@ -3,5 +3,6 @@ matplotlib
 opencv-python
 plyfile
 trimesh==2.35.39
+vtk==9.0.1
 mayavi
 sklearn
